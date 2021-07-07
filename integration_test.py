@@ -7,8 +7,10 @@ from input_processing.process_point_cloud import unorganized_point_cloud_to_open
 from output_processing.gripping_point import covert_grasping_points_to_input_reference
 from utils.dataset_processing import evaluation
 from utils.dataset_processing.grasp import detect_grasps
+import argument_parser
 
-
+print(argument_parser.args)
+print(argument_parser.args.GRIPPER_TYPE_RECOGNITION_SERVICE_IP)
 
 MODEL_INPUT_SIZE = (300, 300)
 
@@ -23,9 +25,6 @@ image = resize_image(image, MODEL_INPUT_SIZE)
 points_out, ang_out, width_out, depth_out = predict(depth=depth_image)
 evaluation.plot_output(image, depth_image, points_out, ang_out, grasp_width_img=width_out, no_grasps=6)
 out = detect_grasps(points_out, ang_out, width_img=width_out, no_grasps=6)
-covert_grasping_points_to_input_reference(out, unorganized_pc,depth_image)
-for grasp in out:
-    print(grasp.center)
-    print(depth_image[grasp.center])
-    print(grasp.angle)
+converted_grasps = covert_grasping_points_to_input_reference(out, unorganized_pc,depth_image)
+print(converted_grasps)
 

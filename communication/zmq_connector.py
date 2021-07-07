@@ -4,12 +4,20 @@ import time
 SUBSCRIPTION_SLEEP_TIME = 3
 
 
-def connect_to_socket_using_ip(ip):
+def connect_to_subscriber_socket_using_ip(ip):
     context = zmq.Context()
     socket = context.socket(zmq.SUB)
     connection_command = "tcp://{}".format(ip)
     socket.connect(connection_command)
     print(f'Connected using {connection_command}')
+    return socket
+
+
+def connect_to_publisher_socket_using_ip(port):
+    context = zmq.Context()
+    socket = context.socket(zmq.PUB)
+    socket.bind("tcp://*:%s" % port)
+
     return socket
 
 
@@ -32,3 +40,7 @@ def is_trigger_received(socket, trigger_signal):
 def get_message(socket):
     msg = socket.recv_string()
     return msg
+
+
+def send_message(socket, topic, messagedata):
+    socket.send("%d %d" % (topic, messagedata))
