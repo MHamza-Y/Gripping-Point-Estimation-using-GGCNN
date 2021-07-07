@@ -3,10 +3,11 @@ __pycache__
 tensorboard
 output
 /data
-ven
-/ven
+venv
+/venv
 *.pyc
 
 /.python-version
 /cornell_dataset_samples/
 /jacquard_samples/
+/venv/

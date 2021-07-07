@@ -11,8 +11,8 @@ MODEL_FILE = 'models/ggcnn_epoch_23_cornell'
 here = path.dirname(path.abspath(__file__))
 sys.path.append(here)
 print(path.join(path.dirname(__file__), MODEL_FILE))
-model = torch.load(path.join(path.dirname(__file__), MODEL_FILE))
-device = torch.device("cuda:0")
+device = torch.device("cpu")
+model = torch.load(path.join(path.dirname(__file__), MODEL_FILE), map_location=torch.device('cpu'))
 
 
 def process_depth_image(depth, crop_size, out_size=300, return_mask=False, crop_y_offset=0):
