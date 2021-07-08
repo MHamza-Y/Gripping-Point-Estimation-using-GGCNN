@@ -36,6 +36,3 @@ make install
 # Install Open3D python package (optional)
 make install-pip-package -j$(nproc)
 python -c "import open3d; print(open3d)"
-
-# Run Open3D GUI (optional, available on when -DBUILD_GUI=ON)
-./bin/Open3D/Open3D
