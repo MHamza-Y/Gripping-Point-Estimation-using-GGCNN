@@ -17,6 +17,9 @@ cd Open3D && git submodule update --init --recursive && mkdir build &&cd build &
     -DBUILD_UNIT_TESTS=ON \
     -DCMAKE_INSTALL_PREFIX=~/open3d_install \
     -DPYTHON_EXECUTABLE=$(which python) \
+    -DBUILD_PYBIND11=ON \
+    -DBUILD_PYTHON_MODULE=ON \
+    -DGLIBCXX_USE_CXX11_ABI=OFF \
     ..
 
 # Build C++ library
