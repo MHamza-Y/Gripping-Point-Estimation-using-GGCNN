@@ -1,4 +1,4 @@
-FROM python:3.8-slim-buster
+FROM intelvcl/open3d-test:18.04-deps-py3
 
 
 ENV VIRTUAL_ENV=/opt/venv
