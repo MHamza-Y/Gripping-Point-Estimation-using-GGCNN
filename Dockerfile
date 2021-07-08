@@ -24,6 +24,8 @@ RUN apt-get update -y \
 RUN  apt-get update \
   && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
+RUN apt install -y libprotobuf-dev protobuf-compiler
+
 WORKDIR /dependency_build
 COPY . .
 
