@@ -22,6 +22,8 @@ RUN pip install -r nano_requirements.txt
 
 WORKDIR /dependency_build
 COPY . .
+RUN chmod +x ./build_cmake.sh
+RUN ./build_cmake.sh
 RUN chmod +x ./build_open3d.sh
 RUN ./build_open3d.sh
 
