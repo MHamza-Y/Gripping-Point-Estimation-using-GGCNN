@@ -22,6 +22,9 @@ RUN pip install -r nano_requirements.txt
 
 WORKDIR /dependency_build
 COPY . .
+RUN  apt-get update \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/*
 RUN chmod +x ./build_cmake.sh
 RUN ./build_cmake.sh
 RUN chmod +x ./build_open3d.sh
