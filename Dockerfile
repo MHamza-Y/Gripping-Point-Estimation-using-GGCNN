@@ -19,7 +19,8 @@ RUN apt-get update -y \
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-RUN apt-get install build-essential
+RUN apt-get update -y \
+  && apt-get install make
 RUN  apt-get update \
   && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
