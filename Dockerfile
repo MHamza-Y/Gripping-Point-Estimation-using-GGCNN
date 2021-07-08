@@ -30,10 +30,12 @@ RUN apt-get update -y \
 RUN apt-get install libssl-dev
 
 WORKDIR /dependency_build
-COPY . .
+COPY build_cmake.sh .
 
 RUN chmod +x ./build_cmake.sh
 RUN ./build_cmake.sh
+
+COPY build_cmake.sh .
 RUN chmod +x ./build_open3d.sh
 RUN ./build_open3d.sh
 
