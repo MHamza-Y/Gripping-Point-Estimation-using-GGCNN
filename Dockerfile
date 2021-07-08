@@ -35,7 +35,7 @@ COPY build_cmake.sh .
 RUN chmod +x ./build_cmake.sh
 RUN ./build_cmake.sh
 
-COPY build_cmake.sh .
+COPY build_open3d.sh .
 RUN chmod +x ./build_open3d.sh
 RUN ./build_open3d.sh
 
