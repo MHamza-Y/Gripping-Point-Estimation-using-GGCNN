@@ -1,11 +1,11 @@
-sudo apt-get update -y
-sudo apt-get install -y apt-utils build-essential git cmake
-sudo apt-get install -y python3-dev python3-pip
-sudo apt-get install -y xorg-dev libglu1-mesa-dev
-sudo apt-get install -y libblas-dev liblapack-dev liblapacke-dev
-sudo apt-get install -y libsdl2-dev libc++-7-dev libc++abi-7-dev libxi-dev
-sudo apt-get install -y clang-7
-sudo apt-get install -y python3-virtualenv ccache
+apt-get update -y
+apt-get install -y apt-utils build-essential git cmake
+apt-get install -y python3-dev python3-pip
+apt-get install -y xorg-dev libglu1-mesa-dev
+apt-get install -y libblas-dev liblapack-dev liblapacke-dev
+apt-get install -y libsdl2-dev libc++-7-dev libc++abi-7-dev libxi-dev
+apt-get install -y clang-7
+apt-get install -y python3-virtualenv ccache
 git clone --recursive https://github.com/intel-isl/Open3D
 cd Open3D
 git submodule update --init --recursive
