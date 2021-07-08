@@ -19,13 +19,13 @@ RUN apt-get update -y \
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-
-WORKDIR /dependency_build
-COPY . .
+RUN yum install make
 RUN  apt-get update \
   && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
-RUN yum install make
+WORKDIR /dependency_build
+COPY . .
+
 RUN chmod +x ./build_cmake.sh
 RUN ./build_cmake.sh
 RUN chmod +x ./build_open3d.sh
