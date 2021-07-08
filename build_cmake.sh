@@ -1,3 +1,4 @@
+apt-get install wget
 apt remove cmake
 apt purge --auto-remove cmake
 version=3.19
