@@ -16,7 +16,7 @@ RUN apt-get update -y \
   && apt-get -y install \
     xvfb \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-COPY requirements.txt .
+COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
 RUN /build_open3d.sh
