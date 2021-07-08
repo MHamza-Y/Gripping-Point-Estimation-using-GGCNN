@@ -27,6 +27,8 @@ RUN  apt-get update \
 RUN apt-get update -y \
   && apt install build-essential -y
 
+RUN apt-get install libssl-dev
+
 WORKDIR /dependency_build
 COPY . .
 
