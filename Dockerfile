@@ -19,8 +19,9 @@ RUN apt-get update -y \
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-RUN /build_open3d.sh
-
 COPY . .
+RUN ./build_open3d.sh
+
+
 ENV COMMAND python -m gripper_service --GRIPPER_TYPE_RECOGNITION_SERVICE_IP 127.0.0.1:5001 --POINT_CLOUD_PUBLISHER_IP 127.0.0.1:5008 --IMAGE_PUBLISHER_IP 127.0.0.1:5012 --TRIGGER_SIGNAL three_jaw --NUMBER_OF_GRASPS 6 --OUTPUT_PORT 5558
 CMD $COMMAND
