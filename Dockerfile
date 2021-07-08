@@ -5,6 +5,7 @@ ENV VIRTUAL_ENV=/opt/venv
 RUN python3 -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
+
 RUN apt-get update -y
 RUN apt install libgl1-mesa-glx -y
 RUN apt-get install 'ffmpeg'\
@@ -12,13 +13,14 @@ RUN apt-get install 'ffmpeg'\
     'libxext6'  -y
 
 RUN pip3 install --upgrade pip
-RUN pip3 install open3d
 RUN apt-get update -y \
   && apt-get -y install \
     xvfb \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 COPY requirements.txt .
 RUN pip install -r nano_requirements.txt
+
+RUN /build_open3d.sh
 
 
 COPY . .
