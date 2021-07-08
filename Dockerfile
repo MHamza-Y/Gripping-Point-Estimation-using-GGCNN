@@ -19,7 +19,7 @@ RUN apt-get update -y \
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-RUN yum install make
+RUN make
 RUN  apt-get update \
   && apt-get install -y wget \
   && rm -rf /var/lib/apt/lists/*
