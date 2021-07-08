@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 class VisOpen3D:
 
-    def __init__(self, width=1920, height=1080, visible=True):
+    def __init__(self, width=1920, height=1080, visible=False):
         self.__vis = open3d.visualization.Visualizer()
         self.__vis.create_window(width=width, height=height, visible=visible)
         self.__width = width
@@ -68,6 +68,8 @@ class VisOpen3D:
         param = open3d.io.read_pinhole_camera_parameters(filename)
         intrinsic = param.intrinsic.intrinsic_matrix
         extrinsic = param.extrinsic
+        print(f'Intrinsic:{intrinsic}')
+        print(f'Extrinsic:{extrinsic}')
         self.update_view_point(intrinsic, extrinsic)
 
     def convert_to_open3d_param(self, intrinsic, extrinsic):

@@ -9,15 +9,16 @@ def connect_to_subscriber_socket_using_ip(ip):
     socket = context.socket(zmq.SUB)
     connection_command = "tcp://{}".format(ip)
     socket.connect(connection_command)
-    print(f'Connected using {connection_command}')
+    print(f'Connected to subscriber socket using {connection_command}')
     return socket
 
 
 def connect_to_publisher_socket_using_ip(port):
     context = zmq.Context()
     socket = context.socket(zmq.PUB)
-    socket.bind("tcp://*:%s" % port)
-
+    connection_command = "tcp://*:%s" % port
+    socket.bind(connection_command)
+    print(f'Connected to publisher socket using {connection_command}')
     return socket
 
 
@@ -34,6 +35,7 @@ def is_trigger_received(socket, trigger_signal):
     if msg == trigger_signal:
         trigger_received = True
 
+    print(f'Trigger received: {trigger_received}')
     return trigger_received
 
 

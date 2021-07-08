@@ -1,12 +1,12 @@
 import numpy as np
-
-from communication.zmq_connector import connect_to_subscriber_socket_using_ip, subscribe_to_topic, is_trigger_received, \
-    get_message, connect_to_publisher_socket_using_ip, send_message
 from input_processing.process_point_cloud import raw_point_cloud_to_numpy, unorganized_point_cloud_to_open3d_format, \
     point_cloud_to_depth_image, resize_image
 from ggcnn.src.ggcnn.ggcnn_torch import predict
 from output_processing.gripping_point import covert_grasping_points_to_input_reference
 from utils.dataset_processing.grasp import detect_grasps
+from communication.zmq_connector import connect_to_subscriber_socket_using_ip, subscribe_to_topic, is_trigger_received, \
+    get_message, connect_to_publisher_socket_using_ip, send_message
+
 import argument_parser
 
 GRIPPER_TYPE_RECOGNITION_SERVICE_IP = argument_parser.args.GRIPPER_TYPE_RECOGNITION_SERVICE_IP
@@ -19,12 +19,17 @@ OUTPUT_PORT = argument_parser.args.OUTPUT_PORT
 
 
 def main():
+    print('Starting gripper service')
+    print(f'Service Variables: {argument_parser.args}')
     gripper_type_recognition_service_socket = connect_to_subscriber_socket_using_ip(GRIPPER_TYPE_RECOGNITION_SERVICE_IP)
     subscribe_to_topic(gripper_type_recognition_service_socket)
     point_cloud_publisher_socket = connect_to_subscriber_socket_using_ip(POINT_CLOUD_PUBLISHER_IP)
     subscribe_to_topic(point_cloud_publisher_socket)
     output_socket = connect_to_publisher_socket_using_ip(OUTPUT_PORT)
+    print('Initial connection setup completed')
+    print('Starting polling for trigger')
     while True:
+        print(f'Waiting for trigger from {GRIPPER_TYPE_RECOGNITION_SERVICE_IP}')
         if is_trigger_received(gripper_type_recognition_service_socket, TRIGGER_SIGNAL):
             raw_point_cloud_data = get_message(point_cloud_publisher_socket)
             unorganized_pc = raw_point_cloud_to_numpy(raw_point_cloud_data)
