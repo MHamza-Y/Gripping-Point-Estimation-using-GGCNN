@@ -19,8 +19,9 @@ RUN apt-get update -y \
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-COPY . .
+
 WORKDIR /dependency_build
+COPY . .
 RUN chmod +x ./build_open3d.sh
 RUN ./build_open3d.sh
 
