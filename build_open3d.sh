@@ -1,3 +1,5 @@
+apt-get -y install cmake
+which cmake
 apt-get update -y
 apt-get install -y apt-utils build-essential git cmake
 apt-get install -y python3-dev python3-pip
