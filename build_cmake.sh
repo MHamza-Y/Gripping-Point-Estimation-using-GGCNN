@@ -1,8 +1,7 @@
-apt-get install wget
 apt remove cmake
 apt purge --auto-remove cmake
 version=3.19
-build=3
+build=7
 mkdir ~/temp
 cd ~/temp
 wget https://cmake.org/files/v$version/cmake-$version.$build.tar.gz
