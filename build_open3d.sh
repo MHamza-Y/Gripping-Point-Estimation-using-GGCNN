@@ -16,7 +16,8 @@ cd Open3D && git submodule update --init --recursive && mkdir build &&cd build &
     -DBUILD_PYTORCH_OPS=OFF \
     -DBUILD_UNIT_TESTS=ON \
     -DCMAKE_INSTALL_PREFIX=~/open3d_install \
-    -DPYTHON_EXECUTABLE=$(which python)
+    -DPYTHON_EXECUTABLE=$(which python) \
+    ..
 
 # Build C++ library
 make -j$(nproc)
