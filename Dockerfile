@@ -1,4 +1,4 @@
-FROM intelvcl/open3d-test:18.04-deps-py3
+FROM intelvcl/open3d-test:18.04-base-py3
 
 
 ENV VIRTUAL_ENV=/opt/venv
@@ -20,7 +20,7 @@ RUN apt-get update -y \
 COPY requirements.txt .
 RUN pip install -r nano_requirements.txt
 
-RUN /build_open3d.sh
+#RUN /build_open3d.sh
 
 
 COPY . .
