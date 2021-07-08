@@ -11,8 +11,8 @@ git clone --recursive https://github.com/intel-isl/Open3D
 cd Open3D && git submodule update --init --recursive && mkdir build &&cd build && cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_CUDA_MODULE=ON \
-    -DBUILD_GUI=ON \
+    -DBUILD_CUDA_MODULE=OFF \
+    -DBUILD_GUI=OFF \
     -DBUILD_TENSORFLOW_OPS=OFF \
     -DBUILD_PYTORCH_OPS=OFF \
     -DBUILD_UNIT_TESTS=ON \
