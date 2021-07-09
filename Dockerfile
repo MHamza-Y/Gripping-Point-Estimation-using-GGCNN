@@ -1,9 +1,6 @@
 FROM python:3.8-slim-buster
 
 
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN apt-get update -y
 RUN apt install libgl1-mesa-glx -y
@@ -17,7 +14,7 @@ RUN apt-get update -y \
     xvfb \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 COPY nano_requirements.txt .
-RUN pip install -r nano_requirements.txt
+RUN pip3 install -r nano_requirements.txt
 
 RUN apt-get update -y \
   && apt-get install make
