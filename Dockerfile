@@ -45,6 +45,7 @@ RUN apt-get install -y ccache
 RUN apt-get install -y python3 python3-dev python3-pip
 
 RUN git clone --recursive https://github.com/intel-isl/Open3D
+RUN apt-get install python-wheel
 #RUN cd Open3D && git submodule update --init --recursive && mkdir build &&cd build && cmake \
 #    -DCMAKE_BUILD_TYPE=Release \
 #    -DBUILD_SHARED_LIBS=ON \
