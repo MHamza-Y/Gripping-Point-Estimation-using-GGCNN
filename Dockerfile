@@ -45,7 +45,7 @@ RUN apt-get install -y libblas-dev liblapack-dev liblapacke-dev
 RUN apt-get install -y libsdl2-dev libc++-7-dev libc++abi-7-dev libxi-dev
 RUN apt-get install -y clang-7
 RUN apt-get install -y ccache
-
+RUN pip3 install open3d-python
 RUN ./build_open3d.sh
 
 
