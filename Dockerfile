@@ -63,7 +63,8 @@ RUN apt-get install -y ccache
 #    && make install && ldconfig \
 #    && make -j$(nproc) pip-package
 
-RUN git clone --recursive https://github.com/intel-isl/Open3D \
+ENV OPEN3DVER=v0.12.0
+RUN git clone -b ${OPEN3DVER} --recursive https://github.com/intel-isl/Open3D \
     && cd Open3D \
     && git submodule update --init --recursive \
     && git clone -b master https://github.com/intel-isl/Open3D-ML \
@@ -76,6 +77,7 @@ RUN git clone --recursive https://github.com/intel-isl/Open3D \
     # aarch64: #include "/usr/include/aarch64-linux-gnu/cblas-netlib.h"
     && sed -i -e "/^#include \"open3d\/core\/linalg\/LinalgHeadersCPU.h\"/i #include \"\/usr\/include\/aarch64-linux-gnu\/cblas-netlib.h\"" \
                  cpp/open3d/core/linalg/BlasWrapper.h
+
 
 RUN cd Open3D \
     && mkdir build \
