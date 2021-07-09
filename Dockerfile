@@ -48,6 +48,6 @@ RUN apt-get install -y ccache
 RUN pip3 install open3d-python
 #RUN ./build_open3d.sh
 
-cd . .
+COPY . .
 ENV COMMAND python -m gripper_service --GRIPPER_TYPE_RECOGNITION_SERVICE_IP 127.0.0.1:5001 --POINT_CLOUD_PUBLISHER_IP 127.0.0.1:5008 --IMAGE_PUBLISHER_IP 127.0.0.1:5012 --TRIGGER_SIGNAL three_jaw --NUMBER_OF_GRASPS 6 --OUTPUT_PORT 5558
 CMD $COMMAND
