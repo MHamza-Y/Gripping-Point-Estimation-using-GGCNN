@@ -8,11 +8,12 @@ from output_processing.gripping_point import covert_grasping_points_to_input_ref
 from utils.dataset_processing import evaluation
 from utils.dataset_processing.grasp import detect_grasps
 import argument_parser
-
+import datetime
 print(argument_parser.args)
 print(argument_parser.args.GRIPPER_TYPE_RECOGNITION_SERVICE_IP)
 
 MODEL_INPUT_SIZE = (300, 300)
+start = datetime.datetime.now()
 
 unorganized_pc = pd.read_csv('runtime_samples/HKR-1.3.txt', skiprows=3, delimiter=';').to_numpy()
 image = cv2.imread('runtime_samples/HKR-1.3.tif')
@@ -27,4 +28,8 @@ evaluation.plot_output(image, depth_image, points_out, ang_out, grasp_width_img=
 out = detect_grasps(points_out, ang_out, width_img=width_out, no_grasps=6)
 converted_grasps = covert_grasping_points_to_input_reference(out, unorganized_pc,depth_image)
 print(converted_grasps)
+
+end = datetime.datetime.now()
+total_time = end - start
+print(f'Total execution time: {total_time}')
 
