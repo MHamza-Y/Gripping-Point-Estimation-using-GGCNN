@@ -46,8 +46,27 @@ RUN apt-get install -y libsdl2-dev libc++-7-dev libc++abi-7-dev libxi-dev
 RUN apt-get install -y clang-7
 RUN apt-get install -y ccache
 
-RUN ./build_open3d.sh
+RUN git clone --recursive https://github.com/intel-isl/Open3D
+RUN cd Open3D && git submodule update --init --recursive && mkdir build &&cd build && cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_CUDA_MODULE=OFF \
+    -DBUILD_GUI=OFF \
+    -DBUILD_TENSORFLOW_OPS=OFF \
+    -DBUILD_PYTORCH_OPS=OFF \
+    -DBUILD_UNIT_TESTS=ON \
+    -DCMAKE_INSTALL_PREFIX=~/open3d_install \
+    -DPYTHON_EXECUTABLE=$(which python) \
+    -DBUILD_PYBIND11=ON \
+    -DBUILD_PYTHON_MODULE=ON \
+    -DGLIBCXX_USE_CXX11_ABI=OFF \
+    ..
 
+RUN cd /Open3D/build \
+    && make -j$(nproc)
+RUN cd /Open3D/build \
+    && make install && ldconfig \
+    && make -j$(nproc) pip-package
 COPY . .
 ENV COMMAND python -m gripper_service --GRIPPER_TYPE_RECOGNITION_SERVICE_IP 127.0.0.1:5001 --POINT_CLOUD_PUBLISHER_IP 127.0.0.1:5008 --IMAGE_PUBLISHER_IP 127.0.0.1:5012 --TRIGGER_SIGNAL three_jaw --NUMBER_OF_GRASPS 6 --OUTPUT_PORT 5558
 CMD $COMMAND
