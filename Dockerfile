@@ -12,8 +12,7 @@ RUN pip3 install --upgrade pip
 RUN apt-get update -y \
   && apt-get -y install \
     xvfb \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-  &&  apt-get install python3-venv
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 
 RUN apt-get update -y \
