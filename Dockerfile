@@ -90,7 +90,7 @@ RUN cd Open3D \
              -DBUILD_CUDA_MODULE=ON \
              -DBUILD_CACHED_CUDA_MANAGER=ON \
              -DBUILD_GUI=ON \
-             -DBUILD_JUPYTER_EXTENSION=ON \
+             -DBUILD_JUPYTER_EXTENSION=OFF \
              -DWITH_OPENMP=ON \
              -DWITH_IPPICV=ON \
              -DENABLE_HEADLESS_RENDERING=OFF \
