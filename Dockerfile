@@ -108,12 +108,8 @@ RUN cd Open3D \
              -DBUNDLE_OPEN3D_ML=OFF \
              -DOPEN3D_ML_ROOT=../Open3D-ML \
             #  -DCMAKE_FIND_DEBUG_MODE=ON \
-             ..
-
-RUN cd /Open3D/build \
-    && make -j$(nproc)
-
-RUN cd /Open3D/build \
+             .. \
+    && make -j$(nproc) \
     # Only one of each of the following lines can be selected.
     #   (1) install -> Build and install the C++ shared library
     #   (2) install-pip-package -> Install pip-package
