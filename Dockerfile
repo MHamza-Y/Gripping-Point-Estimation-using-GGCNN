@@ -23,7 +23,7 @@ RUN  apt-get update \
 RUN apt-get update -y \
   && apt install build-essential -y
 
-RUN apt-get install libssl-dev
+RUN apt-get install libssl-dev -y
 
 COPY nano_requirements.txt .
 RUN pip install -r nano_requirements.txt
