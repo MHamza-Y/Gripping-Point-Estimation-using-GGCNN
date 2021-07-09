@@ -1,9 +1,6 @@
 FROM pinto0309/l4t-base:r32.5.0
 
 
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 RUN apt-get update -y
 RUN apt install libgl1-mesa-glx -y
@@ -15,9 +12,9 @@ RUN pip3 install --upgrade pip
 RUN apt-get update -y \
   && apt-get -y install \
     xvfb \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-COPY nano_requirements.txt .
-RUN pip install -r nano_requirements.txt
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+  &&  apt-get install python3-venv
+
 
 RUN apt-get update -y \
   && apt-get install make
@@ -28,6 +25,9 @@ RUN apt-get update -y \
   && apt install build-essential -y
 
 RUN apt-get install libssl-dev
+
+COPY nano_requirements.txt .
+RUN pip install -r nano_requirements.txt
 
 WORKDIR /dependency_build
 COPY build_cmake.sh .
