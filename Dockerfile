@@ -60,7 +60,7 @@ RUN cd Open3D && git submodule update --init --recursive && mkdir build && cd bu
     -DBUILD_PYTHON_MODULE=ON \
     -DGLIBCXX_USE_CXX11_ABI=OFF \
     ..
-
+RUN cd ..
 # Build C++ library
 RUN make -j$(nproc)
 
