@@ -45,8 +45,8 @@ RUN apt-get install -y ccache
 RUN apt-get install -y python3 python3-dev python3-pip
 RUN apt-get install -y python3-virtualenv
 
-virtualenv --python=$(which python3) ${HOME}/venv
-source ${HOME}/venv/bin/activate
+RUN virtualenv --python=$(which python3) ${HOME}/venv
+RUN source ${HOME}/venv/bin/activate
 RUN git clone --recursive https://github.com/intel-isl/Open3D
 #RUN cd Open3D && git submodule update --init --recursive && mkdir build &&cd build && cmake \
 #    -DCMAKE_BUILD_TYPE=Release \
