@@ -60,11 +60,9 @@ RUN cd Open3D && git submodule update --init --recursive && mkdir build &&cd bui
     -DBUILD_PYBIND11=ON \
     -DBUILD_PYTHON_MODULE=ON \
     -DGLIBCXX_USE_CXX11_ABI=OFF \
-    ..
-
-RUN cd /Open3D/build \
+    .. && cd /Open3D/build \
     && make -j$(nproc)
-RUN cd /Open3D/build \
+    && cd /Open3D/build \
     && make install && ldconfig \
     && make -j$(nproc) pip-package
 COPY . .
