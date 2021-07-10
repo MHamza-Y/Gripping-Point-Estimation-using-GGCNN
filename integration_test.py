@@ -31,5 +31,5 @@ print(converted_grasps)
 
 end = datetime.datetime.now()
 total_time = end - start
-print(f'Total execution time: {total_time}')
+print('Total execution time: {%d}'%total_time)
 
