@@ -1,8 +1,12 @@
 numpy
-matplotlib
 opencv-python
-
+matplotlib
+scikit-image
 imageio
+torch
+torchvision
+torchsummary
 tensorboardX
 pyzmq
 pandas
+sklearn
