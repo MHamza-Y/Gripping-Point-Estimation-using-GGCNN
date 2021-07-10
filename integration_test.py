@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 from ggcnn.src.ggcnn.ggcnn_torch import predict
 import cv2
