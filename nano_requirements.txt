@@ -1,9 +1,9 @@
 numpy
 matplotlib
 opencv-python
+sklearn
 scikit-image
 imageio
 tensorboardX
 pyzmq
 pandas
-sklearn
