@@ -18,7 +18,7 @@ RUN apt-get update -y \
 RUN apt-get update -y \
   && apt-get install -y build-essential libatlas-base-dev
 RUN apt-get update -y \
-  && apt-get install python3-sklearn python3-skimage
+  && apt-get install python3-sklearn python3-skimage -y
 COPY nano_requirements.txt .
 RUN export OPENBLAS_CORETYPE=ARMV8 \
  && pip install -r nano_requirements.txt
