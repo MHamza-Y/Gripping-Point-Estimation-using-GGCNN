@@ -15,7 +15,8 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 
-RUN apt-get install -y build-essential libatlas-base-dev
+RUN apt-get update -y \
+  && apt-get install -y build-essential libatlas-base-dev
 COPY nano_requirements.txt .
 RUN export OPENBLAS_CORETYPE=ARMV8 \
  && pip install -r nano_requirements.txt
