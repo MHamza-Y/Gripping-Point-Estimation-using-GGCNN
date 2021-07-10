@@ -1,6 +1,6 @@
 numpy
-opencv-python
 matplotlib
+opencv-python
 scikit-image
 imageio
 tensorboardX

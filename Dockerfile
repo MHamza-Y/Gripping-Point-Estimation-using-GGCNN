@@ -16,7 +16,8 @@ RUN apt-get update -y \
 
 
 COPY nano_requirements.txt .
-RUN pip install -r nano_requirements.txt
+RUN export OPENBLAS_CORETYPE=ARMV8 \
+ && pip install -r nano_requirements.txt
 
 
 
