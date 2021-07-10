@@ -1,8 +1,7 @@
 numpy
 matplotlib
 opencv-python
-sklearn
-scikit-image==0.16.2
+
 imageio
 tensorboardX
 pyzmq
